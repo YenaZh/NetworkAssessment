@@ -13,7 +13,6 @@ Feature:  Tests to cover searching repositories by author name, with pagination 
     | 120   |100   |
     | -1    |30    |
 
-
     @sorting
   Scenario: Testing sorting for search authors
     Given User sends api call for users with sorting "followers" and order "asc"
