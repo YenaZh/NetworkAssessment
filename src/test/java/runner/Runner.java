@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber.json","rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue = "steps",
-//        tags = "",
+      tags = "@pagination",
         dryRun =false
 )
 public class Runner {
