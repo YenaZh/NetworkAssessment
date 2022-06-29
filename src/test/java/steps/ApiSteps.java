@@ -44,7 +44,7 @@ public class ApiSteps {
     public void user_sends_api_call_for_users_with_sorting_and_order(String sort, String order) {
         Map<String, Object> queryParameters =new HashMap<>();
         queryParameters.put("q","tom");
-        queryParameters.put("per_page",5);
+        queryParameters.put("per_page",3);
         queryParameters.put("page",1);
         queryParameters.put("sort",sort); // followers
         queryParameters.put("order",order); // ascending
@@ -58,7 +58,6 @@ public class ApiSteps {
     @Then("User validates result response body contains {string} in {string} order")
     public void user_validates_result_response_body_contains_in_order(String sort, String order) {
         List<String> urls=response.body().jsonPath().getList("items.followers_url");
-
         for(int i=1;i<urls.size(); i++){
             ResponseBody responseBody1=given().baseUri(urls.get(i)).when().get().body();
             ResponseBody responseBody2=given().baseUri(urls.get(i-1)).when().get().body();
@@ -70,7 +69,7 @@ public class ApiSteps {
                 int size1 = responseBody1.jsonPath().getList("id").size();
                 int size2 = responseBody2.jsonPath().getList("id").size();
                 Assert.assertTrue("Expected: "+size1+" Actual:"+size2,size1>=size2);
-            }else{Assert.fail();}
+            }
         }
 
 
